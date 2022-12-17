@@ -1,6 +1,6 @@
 var bolinha;
 var bolinhaImg;
-var obstaculo1;
+var obstaculo1p1,obstaculo1p2,obstaculo1p3 ;
 var edges;
 
 function preload(){
@@ -15,16 +15,27 @@ function setup() {
   bolinha.addImage("bola", bolinhaImg);
   bolinha.scale = 0.2;
 
-  obstaculo1 = createSprite(350, 100, 500, 50);
-  obstaculo1.velocityX = 20;
+  obstaculo1p1 = createSprite(150, 100, 200, 50);
+  obstaculo1p1.velocityX = 10;
+  obstaculo1p1.shapeColor = "purple";
+  obstaculo1p2 = createSprite(350, 100, 200, 50);
+  obstaculo1p2.velocityX = 10;
+  obstaculo1p2.shapeColor = "white";
+  obstaculo1p3 = createSprite(550, 100, 200, 50);
+  obstaculo1p3.velocityX = 10;
+  obstaculo1p3.shapeColor = "green";
   edges = createEdgeSprites();
 }
 
 function draw() {
   background("black");
 
-  obstaculo1.bounceOff(edges);
+  obstaculo1p1.bounceOff(edges);
+  obstaculo1p2.bounceOff(edges);
+  obstaculo1p3.bounceOff(edges);
 
+  bolinha.bounceOff(obstaculo1p1);
+  bolinha.bounceOff(obstaculo1p3);
  
   if(keyDown("space")) {
     bolinha.velocityY = -10;
